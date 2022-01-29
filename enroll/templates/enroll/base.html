@@ -1,0 +1,27 @@
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        body {
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQObXQhsygvEiRXcGcgGAYTULxFJtMw1OkUHw&usqp=CAU');
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'enroll/css/bootstrap.css' %}">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h3 class="text-center alert alert-danger">Institute Of Engineering And Technology, Lucknow</h3>
+        {% block content %} {% endblock content %}
+    </div>
+    <script src="{% static 'enroll/js/jquery.js' %}"></script>
+    <script src="{% static 'enroll/js/popper.js' %}"></script>
+    <script src="{% static 'enroll/js/bootstrap.js' %}"></script>
+</body>
+
+</html>

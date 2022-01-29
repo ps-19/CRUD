@@ -1,0 +1,52 @@
+{% extends 'enroll/base.html' %} {% block content %}
+
+<div class="row">
+    <div class="col-sm-4">
+        <h4 class="text-center alert alert-info">Student Registration</h4>
+        <form action="" method="POST">
+            {% csrf_token %} {{ form.as_p}}
+            <input type="submit" class="btn btn-success" value="Submit">
+        </form>
+    </div>
+    <div class="col-sm-8">
+        <h4 class="text-center alert alert-info">Students Record</h4>
+        {% if total_data %}
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in total_data %}
+                <tr>
+                    <th scope="row">{{student.id}}</th>
+                    <td>{{student.name}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.password}}</td>
+                    <td>
+                        <a href="{% url 'UpdateData' student.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{% url 'DeleteData' student.id %}" method="POST" class="d-inline">
+                            {% csrf_token %}
+
+                            <input type="submit" value="delete" class="btn btn-danger btn-sm">
+
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h4 class="text-center alert alert-warning">No Record Found</h4>
+        {% endif %}
+
+
+    </div>
+</div>
+
+{% endblock content %}
